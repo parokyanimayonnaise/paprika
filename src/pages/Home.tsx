@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import FadeIn from "../components/FadeIn";
-import NavigationBar from "../components/NavigationBar";
 import { CircleSvg } from "../assets/CircleSvg";
 import { PlaySvg } from "../assets/PlaySvg";
 import VideoBackground from "../components/VideoBackground";
