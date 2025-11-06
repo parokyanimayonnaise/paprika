@@ -100,7 +100,6 @@ const Home = () => {
 
   return (
     <div className="flex flex-col h-screen min-h-[30rem] bg-[linear-gradient(to_bottom,_#ef4444_10%,_#f97316_40%,_#1a0000_90%)]">
-      <NavigationBar />
       <div className="flex flex-col justify-center items-center gap-24">
         <VideoBackground
           source="/smoke-orig.webm"
@@ -113,8 +112,8 @@ const Home = () => {
         />
 
         <div className="flex flex-col gap-16 text-white p-16 rounded-4xl z-20">
-          <FadeIn direction="left">
-            <p className="text-4xl font-semibold text-center">Latest Music</p>
+          <FadeIn direction="down">
+            <p className="text-4xl font-semibold text-center">Yes, Please!</p>
           </FadeIn>
 
           <div className="flex flex-wrap justify-center gap-4 max-w-[calc(8*140px)] mx-auto">
