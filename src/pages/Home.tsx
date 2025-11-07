@@ -12,6 +12,10 @@ type Music = {
 const Home = () => {
   const listOfMusics: Music[] = [
     {
+      title: "YesPleaseBT",
+      music: "YesPleaseBT.wav",
+    },
+    {
       title: "1man2cupBT",
       music: "1man2cupBT.wav",
     },
@@ -27,7 +31,6 @@ const Home = () => {
       title: "InterludeBT",
       music: "InterludeBT.wav",
     },
-    // * samples
     {
       title: "MdusaBT",
       music: "MdusaBT.wav",
@@ -59,10 +62,6 @@ const Home = () => {
     {
       title: "WakeUpBT",
       music: "WakeUpBT.wav",
-    },
-    {
-      title: "YesPleaseBT",
-      music: "YesPleaseBT.wav",
     },
   ];
 
@@ -98,7 +97,7 @@ const Home = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen min-h-[30rem] bg-[linear-gradient(to_bottom,_#ef4444_10%,_#f97316_40%,_#1a0000_90%)]">
+    <div className="relative flex flex-col min-h-screen bg-[linear-gradient(to_bottom,_#ef4444_10%,_#f97316_40%,_#1a0000_90%)]">
       <div className="flex flex-col justify-center items-center gap-24">
         <VideoBackground
           source="/smoke-orig.webm"
@@ -110,23 +109,41 @@ const Home = () => {
           className="absolute bottom-0 w-full h-1/2 object-cover opacity-50"
         />
 
-        <div className="flex flex-col gap-16 text-white p-16 rounded-4xl z-20">
+        <div className="relative z-20 flex flex-col items-center gap-16 text-white p-16 rounded-4xl overflow-y-auto h-screen">
           <FadeIn direction="down">
-            <p className="text-4xl font-semibold text-center">Yes, Please!</p>
+            <div className="hover:bg-black/25 rounded-4xl px-6 py-4 flex flex-col gap-4 items-center w-[100px] lg:w-[140px]">
+              <div
+                className="relative flex justify-center items-center select-none"
+                onClick={() => onButtonClick(listOfMusics[0])}
+              >
+                {musicPlaying?.title === listOfMusics[0].title ? (
+                  <CircleSvg className="absolute z-20 w-[20px] lg:w-[35px]" />
+                ) : (
+                  <PlaySvg className="absolute z-20 w-[20px] lg:w-[35px]" />
+                )}
+                <img
+                  src="/paprika-orig.png"
+                  alt="Wave Image"
+                  width={100}
+                  height={50}
+                />
+              </div>
+              <p className="text-sm">{listOfMusics[0].title}</p>
+            </div>
           </FadeIn>
 
           <div className="flex flex-wrap justify-center gap-4 max-w-[calc(8*140px)] mx-auto">
-            {listOfMusics.map((music, index) => (
+            {listOfMusics.slice(1).map((music, index) => (
               <FadeIn delay={index * 0.2} key={index}>
-                <div className="hover:bg-black/25 rounded-4xl px-8 py-4 flex flex-col gap-4 items-center w-[140px]">
+                <div className="hover:bg-black/25 rounded-4xl px-6 py-4 flex flex-col gap-4 items-center w-[100px] lg:w-[140px]">
                   <div
                     className="relative flex justify-center items-center select-none"
                     onClick={() => onButtonClick(music)}
                   >
                     {musicPlaying?.title === music.title ? (
-                      <CircleSvg className="absolute z-20" />
+                      <CircleSvg className="absolute z-20  w-[20px] lg:w-[35px]" />
                     ) : (
-                      <PlaySvg className="absolute z-20" />
+                      <PlaySvg className="absolute z-20 w-[20px] lg:w-[35px]" />
                     )}
                     <img
                       src="/paprika-orig.png"
@@ -135,7 +152,7 @@ const Home = () => {
                       height={50}
                     />
                   </div>
-                  <p className="text-sm">{music.title}</p>
+                  <p className="text-sm font-semibold">{music.title}</p>
                 </div>
               </FadeIn>
             ))}
